@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+
+        <!-- Define Console Appender -->
+        <Console name="consoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+
+        <!-- Define File Appender -->
+        <File name="fileAppender" fileName="hibernate.log">
+            <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
+        </File>
+
+    </Appenders>
+    <Loggers>
+        <!-- Development -->
+
+        <!-- Log everything in hibernate -->
+        <!--<Logger name="org.hibernate" level="info" additivity="false">
+            <AppenderRef ref="consoleAppender" />
+        </Logger>-->
+
+        <!-- Logger for SQL statements -->
+        <Logger name="org.hibernate.SQL" level="debug" additivity="false">
+            <AppenderRef ref="consoleAppender" />
+            <AppenderRef ref="fileAppender" />
+        </Logger>
+
+        <!-- Logger for JDBC bind parameters -->
+        <!-- Hibernate 6 -->
+        <Logger name="org.hibernate.orm.jdbc.bind" level="debug" additivity="false">
+            <AppenderRef ref="consoleAppender" />
+            <AppenderRef ref="fileAppender" />
+        </Logger>
+
+        <!-- Logger for JDBC bind parameters -->
+        <!-- Hibernate 5 -->
+        <!--        <Logger name="org.hibernate.type.descriptor.sql" level="trace" additivity="false">-->
+        <!--            <AppenderRef ref="consoleAppender" />-->
+        <!--            <AppenderRef ref="fileAppender" />-->
+        <!--        </Logger>-->
+
+        <!-- Чтобы использовать логер в пакете вместо System.out (можно не добавлять) -->
+        <Logger name="hibernate.log" level="debug" additivity="true">
+            <AppenderRef ref="consoleAppender" />
+            <AppenderRef ref="fileAppender" />
+        </Logger>
+
+        <Root level="debug">
+            <AppenderRef ref="fileAppender" />
+        </Root>
+    </Loggers>
+</Configuration>

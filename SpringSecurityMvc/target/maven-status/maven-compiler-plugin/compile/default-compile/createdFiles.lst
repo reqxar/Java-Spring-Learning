@@ -1,0 +1,5 @@
+spring\security\app\config\MySpringSecurityConfig.class
+spring\security\app\config\MySecurityConfig.class
+spring\security\app\config\MySpringSecurityInitializer.class
+spring\security\app\config\MySpringSecurityWebInitializer.class
+spring\security\app\controller\MyController.class

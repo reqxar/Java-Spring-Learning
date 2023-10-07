@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                             http://www.springframework.org/schema/beans/spring-beans.xsd
+                             http://www.springframework.org/schema/context
+                             http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    <!-- Подключение всех спринг аннотаций-->
+    <context:component-scan base-package="com.reqxar.spring"
+                            annotation-config="true"
+                            resource-pattern="**/*.class"
+                            scoped-proxy="no"
+                            use-default-filters="false">
+    <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    <context:include-filter type="assignable" expression="com.reqxar.spring.database.repository.CrudRepository"/>
+    <context:include-filter type="regex" expression="com\..+Repository"/>
+    </context:component-scan>
+
+    <!--Подключение внешних файлов со свойствами-->
+    <context:property-placeholder location="classpath:postgres.properties, oracle.properties"/>
+
+    <!--Подключение Аннотаций
+    <context:annotation-config/>
+    -->
+    <!-- Инициализация кастомных BeanPostProcessor
+    <bean class="com.reqxar.spring.bpp.InjectBeanPostProcessor"/>
+    <bean class="com.reqxar.spring.bpp.TransactionBeanPostProcessor"/>
+    <bean class="com.reqxar.spring.bpp.AuditingBeanPostProcessor"/>
+    -->
+    <!--
+    <bean id="connectionPool1" name="p1" class="com.reqxar.spring.database.pool.ConnectionPool">
+        <constructor-arg name="url" value="${postgres.url}"/>
+        <constructor-arg name="username" value="${postgres.username}"/>
+        <constructor-arg name="password" value="${postgres.password}"/>
+    </bean>
+    <bean id="connectionPool2" name="p2" class="com.reqxar.spring.database.pool.ConnectionPool">
+        <constructor-arg name="url" value="${oracle.url}"/>
+        <constructor-arg name="username" value="${oracle.username}"/>
+        <constructor-arg name="password" value="${oracle.password}"/>
+    </bean>
+    <bean id="connectionPool3" name="p3" class="com.reqxar.spring.database.pool.ConnectionPool">
+        <constructor-arg name="url" value="${oracle.url}"/>
+        <constructor-arg name="username" value="${oracle.username}"/>
+        <constructor-arg name="password" value="${oracle.password}"/>
+        <property name="username" value="root"/>
+    </bean>
+
+    <bean id="companyRepository" class="com.reqxar.spring.database.repository.CompanyRepository"/>
+    -->
+</beans>
