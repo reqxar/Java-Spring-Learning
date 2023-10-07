@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>Letscode.Spring</groupId>
-    <artifactId>SrpingBoot</artifactId>
+    <artifactId>SpringBootMvcApplication</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SrpingBoot</name>
-    <description>SrpingBoot</description>
+    <name>SpringBootMvcApplication</name>
+    <description>SpringBootMvcApplication</description>
     <properties>
         <java.version>17</java.version>
     </properties>
