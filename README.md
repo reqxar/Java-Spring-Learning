@@ -1,3 +1,1 @@
-# Java_spring_learn
-# Java_spring_learn
-# Java_spring_learn
+# Изучение Java spring + Hibernate
